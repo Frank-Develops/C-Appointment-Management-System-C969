@@ -118,5 +118,10 @@ namespace C969_FB
                 reader.Close();
             }
         }
+
+        private void ADD_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
