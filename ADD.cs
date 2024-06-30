@@ -39,15 +39,15 @@ namespace C969_FB
             try
             {
 
-                string customerRecord = "INSERT INTO CUSTOMER (customerID, customerName, addressID, active, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(100, '@name', 100, 1, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test'); ";
-                string addressRecord = "INSERT INTO ADDRESS (addressID, address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate,lastUpdateBy) VALUES(100,'@address', 'fake', 100, '@zipCode', '@phone', '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
-                string cityRecord = "INSERT INTO CITY (cityId, city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(100, '@city', 4, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
-                //string countryRecord = "INSERT INTO CITY (countryId, country, createDate, createdBy, lastUpdat, lastUpdateBy) VALUES(4, '@country'
+                string customerRecord = "INSERT INTO CUSTOMER (customerID, customerName, addressID, active, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(101, @name, 101, 1, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test'); ";
+                string addressRecord = "INSERT INTO ADDRESS (addressID, address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate,lastUpdateBy) VALUES(101,@address, 'fake', 101, @zipCode, @phone, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
+                string cityRecord = "INSERT INTO CITY (cityId, city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(101, @city, 101, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
+                string countryRecord = "INSERT INTO COUNTRY (countryId, country, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(101, @country,'2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
 
 
 
 
-                string addRecord = addressRecord + customerRecord + cityRecord;
+                string addRecord = countryRecord + cityRecord + addressRecord + customerRecord;
 
                 MessageBox.Show(addRecord);
 
