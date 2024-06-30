@@ -27,13 +27,11 @@ namespace C969_FB
             InitializeComponent();
             if (country == "es-MX")
             {
-                MessageBox.Show("if culture");
                 label1.Text = "Iniciar sesión";
                 label2.Text = "Nombre de usuario";
                 label3.Text = "contraseña";
                 Logon.Text = "Iniciar sesión";
             }
-            MessageBox.Show(System.Globalization.CultureInfo.CurrentCulture.Name);
             label4.Text = "User Region " + CultureInfo.CurrentCulture.Name;
             
         }
@@ -57,7 +55,7 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@Username", username);
                 sqlCommand.Parameters.AddWithValue("@Password", password);
                 reader = sqlCommand.ExecuteReader();
-                MessageBox.Show(country);
+             
                
                 if (reader.Read())
                 {
@@ -67,6 +65,10 @@ namespace C969_FB
                         return;
                     }
                     MessageBox.Show("username and password are correct");
+                    this.Hide();
+                    ADD addForm = new ADD();
+                    addForm.Show();
+                    reader.Close();
                 }
                 else
                 {
