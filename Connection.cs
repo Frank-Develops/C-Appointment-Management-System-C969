@@ -11,6 +11,7 @@ namespace C969_FB
 {
     public class Connection
     {
+        //public static string location = System.Globalization.CultureInfo.CurrentCulture.ToString();
 
         public static MySqlConnection conn { get; set; }
 
@@ -22,6 +23,7 @@ namespace C969_FB
                 conn = new MySqlConnection(constr);
                 conn.Open();
                 MessageBox.Show("Connection is Open");
+                
             }
             catch (MySqlException ex)
             {

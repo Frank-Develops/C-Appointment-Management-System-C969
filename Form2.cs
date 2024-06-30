@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -18,9 +20,22 @@ namespace C969_FB
     {   
         MySqlDataReader reader;
         MySqlCommand sqlCommand;
+        string country = System.Globalization.CultureInfo.CurrentCulture.Name.ToString();
+
         public Form2()
         {
             InitializeComponent();
+            if (country == "es-MX")
+            {
+                MessageBox.Show("if culture");
+                label1.Text = "Iniciar sesión";
+                label2.Text = "Nombre de usuario";
+                label3.Text = "contraseña";
+                Logon.Text = "Iniciar sesión";
+            }
+            MessageBox.Show(System.Globalization.CultureInfo.CurrentCulture.Name);
+            label4.Text = "User Region " + CultureInfo.CurrentCulture.Name;
+            
         }
 
 
@@ -42,28 +57,41 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@Username", username);
                 sqlCommand.Parameters.AddWithValue("@Password", password);
                 reader = sqlCommand.ExecuteReader();
+                MessageBox.Show(country);
                
                 if (reader.Read())
                 {
-                    MessageBox.Show("if calls");
+                    if (country == "es-MX")
+                    {
+                        MessageBox.Show("nombre de usuario y contraseña son correctos");
+                        return;
+                    }
                     MessageBox.Show("username and password are correct");
                 }
                 else
                 {
-                    MessageBox.Show("else calls");
+                    if (CultureInfo.CurrentCulture.Name == "es-MX")
+                    {
+                        MessageBox.Show("Información de inicio de sesión incorrecta");
+                        return;
+                    }
                     MessageBox.Show("Incorrect logon information");
                 }
             }
             catch
             {
-                MessageBox.Show(username + " " + password);
+                if (CultureInfo.CurrentCulture.Name == "es-MX")
+                {
+                    MessageBox.Show("Hubo un error");
+                    return;
+                }
                 MessageBox.Show("There was an error");
 
             }
-            finally
-            {
+            //finally
+            //{
 
-            }
+            //}
         }
     }
 }
