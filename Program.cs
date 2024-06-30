@@ -16,7 +16,9 @@ namespace C969_FB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Connection.startConnect();
+            Application.Run(new Form2());
+            Connection.closeConnect();
         }
     }
 }

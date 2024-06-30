@@ -33,9 +33,9 @@
             // 
             // connectDB
             // 
-            this.connectDB.Location = new System.Drawing.Point(315, 290);
+            this.connectDB.Location = new System.Drawing.Point(274, 135);
             this.connectDB.Name = "connectDB";
-            this.connectDB.Size = new System.Drawing.Size(157, 71);
+            this.connectDB.Size = new System.Drawing.Size(327, 192);
             this.connectDB.TabIndex = 0;
             this.connectDB.Text = "Connect";
             this.connectDB.UseVisualStyleBackColor = true;
