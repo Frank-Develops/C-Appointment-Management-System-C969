@@ -11,7 +11,6 @@ namespace C969_FB
 {
     public class Connection
     {
-
         public static MySqlConnection conn { get; set; }
 
         public static void startConnect ()
@@ -20,8 +19,7 @@ namespace C969_FB
             {
                 string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
                 conn = new MySqlConnection(constr);
-                conn.Open();
-                MessageBox.Show("Connection is Open");
+                conn.Open();     
             }
             catch (MySqlException ex)
             {
