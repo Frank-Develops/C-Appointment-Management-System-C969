@@ -90,7 +90,7 @@ namespace C969_FB
             }
             //finally
             //{
-
+                //maybe add something hear and clear text from username and password fields to allow it to do retries 
             //}
         }
     }
