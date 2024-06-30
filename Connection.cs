@@ -1,10 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,40 +9,39 @@ using System.Windows.Forms;
 
 namespace C969_FB
 {
-    public partial class Form1 : Form
+    public class Connection
     {
-        
-        public Form1()
-        {
-            InitializeComponent();
-            
-        }
 
-        private void connectDB_Click(object sender, EventArgs e)
-        {
-            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection conn = null;
+        public static MySqlConnection conn { get; set; }
 
+        public static void startConnect ()
+        {
             try
             {
-
+                string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
                 conn = new MySqlConnection(constr);
                 conn.Open();
                 MessageBox.Show("Connection is Open");
-                this.Hide();
-                Form2 logonScreen = new Form2();
-                logonScreen.Show();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
+        }
+
+        public static void closeConnect()
+        {
+            try
             {
                 if (conn != null)
                 {
                     conn.Close();
                 }
+                conn = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
