@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -177,6 +178,46 @@ namespace C969_FB
                 
                     reader.Close();
                
+            }
+        }
+
+        private void ADD_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string name = nameUpdateField.Text;
+                string address = addressUpdateField.Text;
+                string city = cityUpdateField.Text;
+                string state = stateUpdateField.Text;
+                string country = countryUpdateField.Text;
+                string phone = phoneUpdateField.Text;
+                string zip = zipUpdateField.Text;
+                int customerID = int.Parse(customerIDField.Text);
+
+                string updateCustomer = "UPDATE CUSTOMER SET customerName=@name WHERE customerID = @customerID";
+                sqlCommand = new MySqlCommand(updateCustomer, Connection.conn);
+                sqlCommand.Parameters.AddWithValue("@name", name);
+                sqlCommand.Parameters.AddWithValue("@customerID", customerID);
+                reader = sqlCommand.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+            finally
+            {
+
+                reader.Close();
+
             }
         }
     }
