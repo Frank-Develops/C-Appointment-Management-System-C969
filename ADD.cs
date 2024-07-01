@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace C969_FB
@@ -100,7 +101,7 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@cityID", cityIDint);
                 sqlCommand.Parameters.AddWithValue("@countryID", countryIDint);
 
-                reader = sqlCommand.ExecuteReader();
+                MySqlDataReader reader = sqlCommand.ExecuteReader();
 
 
 
@@ -115,7 +116,67 @@ namespace C969_FB
             }
             finally
             {
-                reader.Close();
+               
+                    reader.Close();
+                
+            }
+        }
+
+        //private void ADD_Load(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+
+                int delete = int.Parse(deleteField.Text);
+
+                string getInfo = "SELECT addressId FROM Customer WHERE customerID = @deleteID";
+                sqlCommand = new MySqlCommand(getInfo, Connection.conn);
+                sqlCommand.Parameters.AddWithValue("@deleteID", delete);
+                DataTable dt = new DataTable();
+                MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
+                sda.Fill(dt);
+                string addressIDString = dt.Rows[0][0].ToString();
+                int addressIDint = int.Parse(addressIDString);
+
+
+
+
+                string deleteAppointments = "DELETE FROM APPOINTMENT WHERE customerID = @deleteID;";
+                string deleteCustomer = "DELETE FROM CUSTOMER WHERE customerID = @deleteID;";
+                string deleteAddress = "DELETE FROM ADDRESS WHERE addressID = @addressID;";
+                
+
+
+                sqlCommand = new MySqlCommand(deleteAppointments, Connection.conn);
+                sqlCommand.Parameters.AddWithValue("@deleteID", delete);
+                
+                sqlCommand = new MySqlCommand(deleteAddress, Connection.conn);
+                sqlCommand.Parameters.AddWithValue("@address", addressIDint);
+              
+                sqlCommand = new MySqlCommand(deleteCustomer, Connection.conn);
+                sqlCommand.Parameters.AddWithValue("@deleteID", delete);
+                reader = sqlCommand.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+            finally
+            {
+                
+                    reader.Close();
+               
             }
         }
     }
