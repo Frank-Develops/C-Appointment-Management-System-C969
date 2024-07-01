@@ -240,6 +240,7 @@
             this.deleteButton.TabIndex = 20;
             this.deleteButton.Text = "Delete Customer";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // label9
             // 
@@ -439,7 +440,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ADD";
             this.Text = "ADD";
-            this.Load += new System.EventHandler(this.ADD_Load);
+            //this.Load += new System.EventHandler(this.ADD_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
