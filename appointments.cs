@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace C969_FB
 {
@@ -47,7 +49,42 @@ namespace C969_FB
                 //2024-12-10 06:05:00
                 //2024-12-10 07:05:00
 
-                //string overlapCheck = 
+                //select all start and end from table 
+                string overlapCheck = "SELECT START, END FROM APPOINTMENT";
+
+                //string overlapCheck = "SELECT START, END FROM APPOINTMENT WHERE START >= @start AND END <= @end ";
+                //string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START >= @start";
+
+                sqlCommand = new MySqlCommand(overlapCheck, Connection.conn);
+                sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start));
+                MessageBox.Show(DateTime.Parse(start).ToString());
+                sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end));
+                DataTable dt = new DataTable();
+                MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
+                sda.Fill(dt);
+                //foreach (DataRow row in dt.Rows)
+                //{
+                //    if (DateTime.Parse(row[0]) )
+                //    //MessageBox.Show(row[0].ToString());
+                //}
+
+                //if (dt == null)
+                //{
+                //    MessageBox.Show("no overlap");
+                //} else
+                //{
+                //    MessageBox.Show("there is overlap");
+                //}
+
+                  
+                
+                    //MessageBox.Show(row[0].ToString());
+                    //MessageBox.Show(row[1].ToString());
+                
+                //string overlapCheck = "SELECT START, END FROM APPOINTMENT WHERE START >=@start";
+
+
+
                 string insertAppointment = "INSERT INTO APPOINTMENT(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(@customerID, @userID, @title, @description, @location, @contact, @type, 'fake', @start, @end, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
                 sqlCommand = new MySqlCommand(insertAppointment, Connection.conn);
 
