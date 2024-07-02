@@ -233,7 +233,6 @@
             this.customerIDBox.Name = "customerIDBox";
             this.customerIDBox.Size = new System.Drawing.Size(163, 26);
             this.customerIDBox.TabIndex = 15;
-            this.customerIDBox.TextChanged += new System.EventHandler(this.customerID_TextChanged);
             // 
             // userIDBox
             // 
@@ -498,6 +497,7 @@
             this.updateAppointment.TabIndex = 45;
             this.updateAppointment.Text = "Update Appointment";
             this.updateAppointment.UseVisualStyleBackColor = true;
+            this.updateAppointment.Click += new System.EventHandler(this.updateAppointment_Click);
             // 
             // addAppointment
             // 
