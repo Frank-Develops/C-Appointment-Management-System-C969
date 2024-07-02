@@ -64,6 +64,7 @@
             this.phoneUpdateField = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.customerIDField = new System.Windows.Forms.TextBox();
+            this.updateCustomer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -396,12 +397,24 @@
             this.customerIDField.Size = new System.Drawing.Size(184, 26);
             this.customerIDField.TabIndex = 37;
             // 
+            // updateCustomer
+            // 
+            this.updateCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.updateCustomer.Location = new System.Drawing.Point(961, 406);
+            this.updateCustomer.Name = "updateCustomer";
+            this.updateCustomer.Size = new System.Drawing.Size(136, 79);
+            this.updateCustomer.TabIndex = 38;
+            this.updateCustomer.Text = "Update Customer";
+            this.updateCustomer.UseVisualStyleBackColor = true;
+            this.updateCustomer.Click += new System.EventHandler(this.updateCustomer_Click);
+            // 
             // ADD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1109, 655);
+            this.Controls.Add(this.updateCustomer);
             this.Controls.Add(this.customerIDField);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.phoneUpdateField);
@@ -440,7 +453,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ADD";
             this.Text = "ADD";
-            //this.Load += new System.EventHandler(this.ADD_Load);
+            this.Load += new System.EventHandler(this.ADD_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,5 +497,6 @@
         private System.Windows.Forms.TextBox phoneUpdateField;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox customerIDField;
+        private System.Windows.Forms.Button updateCustomer;
     }
 }
