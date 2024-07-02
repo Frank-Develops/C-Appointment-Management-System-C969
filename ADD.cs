@@ -72,9 +72,9 @@ namespace C969_FB
                 MySqlDataAdapter sda4 = new MySqlDataAdapter(sqlCommand);
                 sda.Fill(dt4);
                 string countryIDString = dt4.Rows[0][0].ToString();
-                int countryIDint = int.Parse (countryIDString);
+                int countryIDint = int.Parse(countryIDString);
                 countryIDint++;
-                
+
 
 
 
@@ -90,7 +90,7 @@ namespace C969_FB
 
 
                 string addRecord = countryRecord + cityRecord + addressRecord + customerRecord;
-                
+
 
 
 
@@ -170,6 +170,7 @@ namespace C969_FB
                 sqlCommand = new MySqlCommand(deleteCustomer, Connection.conn);
                 sqlCommand.Parameters.AddWithValue("@deleteID", delete);
                 reader = sqlCommand.ExecuteReader();
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -208,48 +209,19 @@ namespace C969_FB
                 int customerID = int.Parse(customerIDField.Text);
 
 
-                //string addressIDQuery = "SELECT MAX(addressId) FROM Address";
-                //sqlCommand = new MySqlCommand(addressIDQuery, Connection.conn);
-                //MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
-                //DataTable dt = new DataTable();
-                //sda.Fill(dt);
-                //string addressIDString = dt.Rows[0][0].ToString();
-                //int addressIDint = int.Parse(addressIDString);
-                //addressIDint++;
-                //string cityIDQuery = "SELECT MAX(cityId) FROM City";
-                //sqlCommand = new MySqlCommand(cityIDQuery, Connection.conn);
-                //DataTable dt2 = new DataTable();
-                //MySqlDataAdapter sda2 = new MySqlDataAdapter(sqlCommand);
-                //sda.Fill(dt2);
-                //string cityIDString = dt2.Rows[0][0].ToString();
-                //int cityIDint = int.Parse(cityIDString);
-                //cityIDint++;
-                //string countryIDQuery = "SELECT MAX(countryId) FROM Country";
-                //sqlCommand = new MySqlCommand(countryIDQuery, Connection.conn);
-                //DataTable dt3 = new DataTable();
-                //MySqlDataAdapter sda3 = new MySqlDataAdapter(sqlCommand);
-                //sda.Fill(dt3);
-                //string countryIDString = dt3.Rows[0][0].ToString();
-                //int countryIDint = int.Parse(countryIDString);
-                //countryIDint++;
 
 
 
-                //string updateCustomer = "UPDATE CUSTOMER SET customerName=@name WHERE customerID = @customerID;";
-                //string addressRecord = "INSERT INTO ADDRESS VALUES(@addressID,@address, 'fake', @cityID, @zipCode, @phone, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
-                //string cityRecord = "INSERT INTO CITY VALUES(@cityID, @city, @countryID, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
-                //string countryRecord = "INSERT INTO COUNTRY(country, createdate, createdby, lastupdate, lastupdateby)VALUES (@country,'2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
 
-                string updateCustomer = "UPDATE CUSTOMER SET customerName=@name WHERE customerID = @customerID;";
-                string addressRecord = "INSERT INTO ADDRESS VALUES(@addressID,@address, 'fake', @cityID, @zipCode, @phone, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
-                string cityRecord = "INSERT INTO CITY VALUES(@cityID, @city, @countryID, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
+                string updateCustomer = "UPDATE CUSTOMER SET customerName=@name, addressID=@addressID WHERE customerID = @customerID;";
+                string addressRecord = "INSERT INTO ADDRESS(address, address2, cityID, postalcode, phone, createdate, createdby, lastupdate, lastupdateby) VALUES(@address, 'fake', @cityID, @zipCode, @phone, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
+                string cityRecord = "INSERT INTO CITY(city, countryid,createdate, createdby, lastupdate, lastupdateby)  VALUES(@city, @countryID, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
                 string countryRecord = "INSERT INTO COUNTRY(country, createdate, createdby, lastupdate, lastupdateby)VALUES (@country,'2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
 
-               
-                //string updateCommands = countryRecord + cityRecord + addressRecord + updateCustomer;
+
 
                 sqlCommand = new MySqlCommand(countryRecord, Connection.conn);
-        
+
                 sqlCommand.Parameters.AddWithValue("@name", name);
                 sqlCommand.Parameters.AddWithValue("@customerID", customerID);
                 sqlCommand.Parameters.AddWithValue("@address", address);
@@ -258,23 +230,46 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@country", country);
                 sqlCommand.Parameters.AddWithValue("@phone", phone);
                 sqlCommand.Parameters.AddWithValue("@zipCode", zipCode);
-               
 
 
-                //sqlCommand.Parameters.AddWithValue("@addressID", addressIDint);
-                //sqlCommand.Parameters.AddWithValue("@cityID", cityIDint);
-                //sqlCommand.Parameters.AddWithValue("@countryID", countryIDint);
+
+
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
-                string countryIDQuery = "SELECT MAX(countryId) FROM Country";
-                sqlCommand = new MySqlCommand(countryIDQuery, Connection.conn);
-                MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
-                DataTable dt3 = new DataTable();
-                MySqlDataAdapter sda3 = new MySqlDataAdapter(sqlCommand);
-                sda.Fill(dt3);
-                string countryIDString = dt3.Rows[0][0].ToString();
-                int countryIDint = int.Parse(countryIDString);
-                MessageBox.Show(countryIDint.ToString());
+
+                int countryIDint = (int)sqlCommand.LastInsertedId;
+
+                sqlCommand = new MySqlCommand(cityRecord, Connection.conn);
+                MySqlDataAdapter sda4 = new MySqlDataAdapter(sqlCommand);
+                sqlCommand.Parameters.AddWithValue("@countryID", countryIDint);
+                sqlCommand.Parameters.AddWithValue("@city", city);
+                reader = sqlCommand.ExecuteReader();
+                reader.Close();
+                int cityIDint = (int)sqlCommand.LastInsertedId;
+
+
+                sqlCommand = new MySqlCommand(addressRecord, Connection.conn);
+                MySqlDataAdapter sda5 = new MySqlDataAdapter(sqlCommand);
+
+                sqlCommand.Parameters.AddWithValue("@cityID", cityIDint);
+                sqlCommand.Parameters.AddWithValue("@address", address);
+                sqlCommand.Parameters.AddWithValue("@city", city);
+                sqlCommand.Parameters.AddWithValue("@phone", phone);
+                sqlCommand.Parameters.AddWithValue("@zipCode", zipCode);
+                reader = sqlCommand.ExecuteReader();
+                reader.Close();
+
+                int addressIDint = (int)sqlCommand.LastInsertedId;
+
+                MessageBox.Show(addressIDint.ToString());
+                MessageBox.Show(name);
+
+                sqlCommand = new MySqlCommand(updateCustomer, Connection.conn);
+                MySqlDataAdapter sda6 = new MySqlDataAdapter(sqlCommand);
+                sqlCommand.Parameters.AddWithValue("@name", name);
+                sqlCommand.Parameters.AddWithValue("@addressID", addressIDint);
+                sqlCommand.Parameters.AddWithValue("@customerID", customerID);
+                //sqlCommand.ExecuteNonQuery();
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
 
