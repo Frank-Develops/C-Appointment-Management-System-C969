@@ -75,6 +75,7 @@
             this.deleteAppointment = new System.Windows.Forms.Button();
             this.updateAppointment = new System.Windows.Forms.Button();
             this.addAppointment = new System.Windows.Forms.Button();
+            this.openCalendar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Close
@@ -511,12 +512,24 @@
             this.addAppointment.UseVisualStyleBackColor = true;
             this.addAppointment.Click += new System.EventHandler(this.addAppointment_Click);
             // 
+            // openCalendar
+            // 
+            this.openCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.openCalendar.Location = new System.Drawing.Point(811, 348);
+            this.openCalendar.Name = "openCalendar";
+            this.openCalendar.Size = new System.Drawing.Size(294, 68);
+            this.openCalendar.TabIndex = 47;
+            this.openCalendar.Text = "Calendar View";
+            this.openCalendar.UseVisualStyleBackColor = true;
+            this.openCalendar.Click += new System.EventHandler(this.openCalendar_Click);
+            // 
             // Appointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1142, 637);
+            this.Controls.Add(this.openCalendar);
             this.Controls.Add(this.addAppointment);
             this.Controls.Add(this.updateAppointment);
             this.Controls.Add(this.deleteAppointment);
@@ -620,5 +633,6 @@
         private System.Windows.Forms.Button deleteAppointment;
         private System.Windows.Forms.Button updateAppointment;
         private System.Windows.Forms.Button addAppointment;
+        private System.Windows.Forms.Button openCalendar;
     }
 }

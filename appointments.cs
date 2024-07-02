@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.Metrics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,9 @@ namespace C969_FB
                 string type = typeBox.Text;
                 string start = startBox.Text;
                 string end = endBox.Text;
+                string open = "2024-12-10 08:00:00";
+                string close = "2024-12-10 17:00:00";
+
 
                 // YYYY-MM-DD hh:mm:ss.
                 //2024-12-10 06:05:00
@@ -63,6 +67,16 @@ namespace C969_FB
                     rowCounter++;
                 }
 
+                if(DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
+                {
+                    MessageBox.Show("within business hours");
+                } else
+                {
+                    MessageBox.Show("it is outside business hours");
+                    return;
+                }
+
+              
 
 
                 if (rowCounter == 0)
@@ -127,6 +141,8 @@ namespace C969_FB
                 string start = startUpdate.Text;
                 string end = endUpdate.Text;
                 int appointmentID = int.Parse(appointmentIDUpdate.Text);
+                string open = "2024-12-10 08:00:00";
+                string close = "2024-12-10 17:00:00";
 
 
                 // YYYY-MM-DD hh:mm:ss.
@@ -147,7 +163,15 @@ namespace C969_FB
                     rowCounter++;
                 }
 
-
+                if (DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
+                {
+                    MessageBox.Show("within business hours");
+                }
+                else
+                {
+                    MessageBox.Show("it is outside business hours");
+                    return;
+                }
 
                 if (rowCounter == 0)
                 {
@@ -222,6 +246,13 @@ namespace C969_FB
                     reader.Close();
                 }
             }
+        }
+
+        private void openCalendar_Click(object sender, EventArgs e)
+        {
+            calendar cal = new calendar();
+            this.Close();
+            cal.Show();
         }
     }
 }

@@ -110,6 +110,12 @@
     <Compile Include="appointments.Designer.cs">
       <DependentUpon>appointments.cs</DependentUpon>
     </Compile>
+    <Compile Include="calendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="calendar.Designer.cs">
+      <DependentUpon>calendar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="DBIDs.cs" />
     <Compile Include="Form1.cs">
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="appointments.resx">
       <DependentUpon>appointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="calendar.resx">
+      <DependentUpon>calendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
