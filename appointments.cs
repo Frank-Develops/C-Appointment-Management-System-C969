@@ -192,5 +192,36 @@ namespace C969_FB
                 }
             }
         }
+
+        private void deleteAppointment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int appointmentID = int.Parse(deleteID.Text);
+
+                string deleteAppointment = "DELETE FROM APPOINTMENT WHERE appointmentID = @appointmentID";
+                sqlCommand = new MySqlCommand(deleteAppointment, Connection.conn);
+                sqlCommand.Parameters.AddWithValue("@appointmentID", appointmentID);
+                reader = sqlCommand.ExecuteReader();
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            //maybe make that MYSQL exception
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
+
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+        }
     }
 }
