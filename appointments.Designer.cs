@@ -43,15 +43,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.start = new System.Windows.Forms.Label();
             this.end = new System.Windows.Forms.Label();
-            this.customerID = new System.Windows.Forms.TextBox();
-            this.userID = new System.Windows.Forms.TextBox();
-            this.title = new System.Windows.Forms.TextBox();
-            this.description = new System.Windows.Forms.TextBox();
-            this.location = new System.Windows.Forms.TextBox();
-            this.contact = new System.Windows.Forms.TextBox();
-            this.type = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.customerIDBox = new System.Windows.Forms.TextBox();
+            this.userIDBox = new System.Windows.Forms.TextBox();
+            this.titleBox = new System.Windows.Forms.TextBox();
+            this.descriptionBox = new System.Windows.Forms.TextBox();
+            this.locationBox = new System.Windows.Forms.TextBox();
+            this.contactBox = new System.Windows.Forms.TextBox();
+            this.typeBox = new System.Windows.Forms.TextBox();
+            this.startBox = new System.Windows.Forms.TextBox();
+            this.endBox = new System.Windows.Forms.TextBox();
             this.customerIDUpdate = new System.Windows.Forms.TextBox();
             this.userIDUpdate = new System.Windows.Forms.TextBox();
             this.titleUpdate = new System.Windows.Forms.TextBox();
@@ -226,77 +226,78 @@
             this.end.TabIndex = 14;
             this.end.Text = "End";
             // 
-            // customerID
+            // customerIDBox
             // 
-            this.customerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.customerID.Location = new System.Drawing.Point(147, 144);
-            this.customerID.Name = "customerID";
-            this.customerID.Size = new System.Drawing.Size(163, 26);
-            this.customerID.TabIndex = 15;
+            this.customerIDBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.customerIDBox.Location = new System.Drawing.Point(147, 144);
+            this.customerIDBox.Name = "customerIDBox";
+            this.customerIDBox.Size = new System.Drawing.Size(163, 26);
+            this.customerIDBox.TabIndex = 15;
+            this.customerIDBox.TextChanged += new System.EventHandler(this.customerID_TextChanged);
             // 
-            // userID
+            // userIDBox
             // 
-            this.userID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.userID.Location = new System.Drawing.Point(147, 188);
-            this.userID.Name = "userID";
-            this.userID.Size = new System.Drawing.Size(163, 26);
-            this.userID.TabIndex = 16;
+            this.userIDBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.userIDBox.Location = new System.Drawing.Point(147, 188);
+            this.userIDBox.Name = "userIDBox";
+            this.userIDBox.Size = new System.Drawing.Size(163, 26);
+            this.userIDBox.TabIndex = 16;
             // 
-            // title
+            // titleBox
             // 
-            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.title.Location = new System.Drawing.Point(147, 231);
-            this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(163, 26);
-            this.title.TabIndex = 17;
+            this.titleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.titleBox.Location = new System.Drawing.Point(147, 231);
+            this.titleBox.Name = "titleBox";
+            this.titleBox.Size = new System.Drawing.Size(163, 26);
+            this.titleBox.TabIndex = 17;
             // 
-            // description
+            // descriptionBox
             // 
-            this.description.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.description.Location = new System.Drawing.Point(147, 277);
-            this.description.Name = "description";
-            this.description.Size = new System.Drawing.Size(163, 26);
-            this.description.TabIndex = 18;
+            this.descriptionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.descriptionBox.Location = new System.Drawing.Point(147, 277);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(163, 26);
+            this.descriptionBox.TabIndex = 18;
             // 
-            // location
+            // locationBox
             // 
-            this.location.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.location.Location = new System.Drawing.Point(147, 322);
-            this.location.Name = "location";
-            this.location.Size = new System.Drawing.Size(163, 26);
-            this.location.TabIndex = 19;
+            this.locationBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.locationBox.Location = new System.Drawing.Point(147, 322);
+            this.locationBox.Name = "locationBox";
+            this.locationBox.Size = new System.Drawing.Size(163, 26);
+            this.locationBox.TabIndex = 19;
             // 
-            // contact
+            // contactBox
             // 
-            this.contact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.contact.Location = new System.Drawing.Point(147, 366);
-            this.contact.Name = "contact";
-            this.contact.Size = new System.Drawing.Size(163, 26);
-            this.contact.TabIndex = 20;
+            this.contactBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.contactBox.Location = new System.Drawing.Point(147, 366);
+            this.contactBox.Name = "contactBox";
+            this.contactBox.Size = new System.Drawing.Size(163, 26);
+            this.contactBox.TabIndex = 20;
             // 
-            // type
+            // typeBox
             // 
-            this.type.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.type.Location = new System.Drawing.Point(147, 404);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(163, 26);
-            this.type.TabIndex = 21;
+            this.typeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.typeBox.Location = new System.Drawing.Point(147, 404);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(163, 26);
+            this.typeBox.TabIndex = 21;
             // 
-            // textBox8
+            // startBox
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox8.Location = new System.Drawing.Point(147, 442);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(163, 26);
-            this.textBox8.TabIndex = 22;
+            this.startBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.startBox.Location = new System.Drawing.Point(147, 442);
+            this.startBox.Name = "startBox";
+            this.startBox.Size = new System.Drawing.Size(163, 26);
+            this.startBox.TabIndex = 22;
             // 
-            // textBox9
+            // endBox
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox9.Location = new System.Drawing.Point(147, 489);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(163, 26);
-            this.textBox9.TabIndex = 23;
+            this.endBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.endBox.Location = new System.Drawing.Point(147, 489);
+            this.endBox.Name = "endBox";
+            this.endBox.Size = new System.Drawing.Size(163, 26);
+            this.endBox.TabIndex = 23;
             // 
             // customerIDUpdate
             // 
@@ -507,6 +508,7 @@
             this.addAppointment.TabIndex = 46;
             this.addAppointment.Text = "Add Appointment";
             this.addAppointment.UseVisualStyleBackColor = true;
+            this.addAppointment.Click += new System.EventHandler(this.addAppointment_Click);
             // 
             // Appointments
             // 
@@ -537,15 +539,15 @@
             this.Controls.Add(this.titleUpdate);
             this.Controls.Add(this.userIDUpdate);
             this.Controls.Add(this.customerIDUpdate);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.type);
-            this.Controls.Add(this.contact);
-            this.Controls.Add(this.location);
-            this.Controls.Add(this.description);
-            this.Controls.Add(this.title);
-            this.Controls.Add(this.userID);
-            this.Controls.Add(this.customerID);
+            this.Controls.Add(this.endBox);
+            this.Controls.Add(this.startBox);
+            this.Controls.Add(this.typeBox);
+            this.Controls.Add(this.contactBox);
+            this.Controls.Add(this.locationBox);
+            this.Controls.Add(this.descriptionBox);
+            this.Controls.Add(this.titleBox);
+            this.Controls.Add(this.userIDBox);
+            this.Controls.Add(this.customerIDBox);
             this.Controls.Add(this.end);
             this.Controls.Add(this.start);
             this.Controls.Add(this.label11);
@@ -585,15 +587,15 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label start;
         private System.Windows.Forms.Label end;
-        private System.Windows.Forms.TextBox customerID;
-        private System.Windows.Forms.TextBox userID;
-        private System.Windows.Forms.TextBox title;
-        private System.Windows.Forms.TextBox description;
-        private System.Windows.Forms.TextBox location;
-        private System.Windows.Forms.TextBox contact;
-        private System.Windows.Forms.TextBox type;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox customerIDBox;
+        private System.Windows.Forms.TextBox userIDBox;
+        private System.Windows.Forms.TextBox titleBox;
+        private System.Windows.Forms.TextBox descriptionBox;
+        private System.Windows.Forms.TextBox locationBox;
+        private System.Windows.Forms.TextBox contactBox;
+        private System.Windows.Forms.TextBox typeBox;
+        private System.Windows.Forms.TextBox startBox;
+        private System.Windows.Forms.TextBox endBox;
         private System.Windows.Forms.TextBox customerIDUpdate;
         private System.Windows.Forms.TextBox userIDUpdate;
         private System.Windows.Forms.TextBox titleUpdate;
