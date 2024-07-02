@@ -29,5 +29,12 @@ namespace C969_FB
             System.Windows.Forms.Application.ExitThread();
 
         }
+
+        private void appointments_Click(object sender, EventArgs e)
+        {
+            Appointments appoint = new Appointments();
+            appoint.Show();
+            this.Hide();
+        }
     }
 }
