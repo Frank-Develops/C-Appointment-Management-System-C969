@@ -65,6 +65,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.customerIDField = new System.Windows.Forms.TextBox();
             this.updateCustomer = new System.Windows.Forms.Button();
+            this.close = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -218,7 +219,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(703, 511);
+            this.label4.Location = new System.Drawing.Point(402, 513);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(365, 20);
             this.label4.TabIndex = 18;
@@ -227,7 +228,7 @@
             // deleteField
             // 
             this.deleteField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.deleteField.Location = new System.Drawing.Point(707, 584);
+            this.deleteField.Location = new System.Drawing.Point(406, 594);
             this.deleteField.Name = "deleteField";
             this.deleteField.Size = new System.Drawing.Size(184, 26);
             this.deleteField.TabIndex = 19;
@@ -235,7 +236,7 @@
             // deleteButton
             // 
             this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.deleteButton.Location = new System.Drawing.Point(932, 558);
+            this.deleteButton.Location = new System.Drawing.Point(631, 564);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(136, 79);
             this.deleteButton.TabIndex = 20;
@@ -408,12 +409,24 @@
             this.updateCustomer.UseVisualStyleBackColor = true;
             this.updateCustomer.Click += new System.EventHandler(this.updateCustomer_Click);
             // 
+            // close
+            // 
+            this.close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.close.Location = new System.Drawing.Point(948, 568);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(136, 79);
+            this.close.TabIndex = 39;
+            this.close.Text = "Close";
+            this.close.UseVisualStyleBackColor = true;
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
             // ADD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1109, 655);
+            this.Controls.Add(this.close);
             this.Controls.Add(this.updateCustomer);
             this.Controls.Add(this.customerIDField);
             this.Controls.Add(this.label17);
@@ -498,5 +511,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox customerIDField;
         private System.Windows.Forms.Button updateCustomer;
+        private System.Windows.Forms.Button close;
     }
 }
