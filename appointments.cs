@@ -37,8 +37,8 @@ namespace C969_FB
             {
                 int customerID = int.Parse(customerIDBox.Text);
                 int userID = int.Parse(userIDBox.Text);
-                string title = titleBox.Text;   
-                string description = descriptionBox.Text;  
+                string title = titleBox.Text;
+                string description = descriptionBox.Text;
                 string location = locationBox.Text;
                 string contact = contactBox.Text;
                 string type = typeBox.Text;
@@ -49,41 +49,29 @@ namespace C969_FB
                 //2024-12-10 06:05:00
                 //2024-12-10 07:05:00
 
-                //select all start and end from table 
-                string overlapCheck = "SELECT START, END FROM APPOINTMENT";
+               
 
                 //string overlapCheck = "SELECT START, END FROM APPOINTMENT WHERE START >= @start AND END <= @end ";
-                //string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START >= @start";
+                string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START <= @end AND END >= @start";
 
                 sqlCommand = new MySqlCommand(overlapCheck, Connection.conn);
                 sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start));
-                MessageBox.Show(DateTime.Parse(start).ToString());
                 sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end));
                 DataTable dt = new DataTable();
                 MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
                 sda.Fill(dt);
-                //foreach (DataRow row in dt.Rows)
-                //{
-                //    if (DateTime.Parse(row[0]) )
-                //    //MessageBox.Show(row[0].ToString());
-                //}
-
-                //if (dt == null)
-                //{
-                //    MessageBox.Show("no overlap");
-                //} else
-                //{
-                //    MessageBox.Show("there is overlap");
-                //}
-
-                  
-                
-                    //MessageBox.Show(row[0].ToString());
-                    //MessageBox.Show(row[1].ToString());
-                
-                //string overlapCheck = "SELECT START, END FROM APPOINTMENT WHERE START >=@start";
+                int rowCounter = 0;
+                foreach (DataRow row in dt.Rows)
+                {
+                    rowCounter++;
+                }
 
 
+
+                if (rowCounter == 0)
+                {
+                    MessageBox.Show("no overlap");
+               
 
                 string insertAppointment = "INSERT INTO APPOINTMENT(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(@customerID, @userID, @title, @description, @location, @contact, @type, 'fake', @start, @end, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
                 sqlCommand = new MySqlCommand(insertAppointment, Connection.conn);
@@ -99,7 +87,13 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@end", end);
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
-            } catch (Exception ex)
+                }
+                else
+                {
+                    MessageBox.Show("there is already an appointment at this time");
+                }
+            }
+            catch (Exception ex)
             {
                 {
 
