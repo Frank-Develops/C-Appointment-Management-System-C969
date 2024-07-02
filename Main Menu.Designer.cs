@@ -76,6 +76,7 @@
             this.appointments.TabIndex = 3;
             this.appointments.Text = "Manage Appointments";
             this.appointments.UseVisualStyleBackColor = true;
+            this.appointments.Click += new System.EventHandler(this.appointments_Click);
             // 
             // reports
             // 
