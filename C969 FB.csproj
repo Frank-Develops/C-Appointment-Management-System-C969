@@ -118,6 +118,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Menu.Designer.cs">
+      <DependentUpon>Main Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Localize\Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Menu.resx">
+      <DependentUpon>Main Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Localize\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

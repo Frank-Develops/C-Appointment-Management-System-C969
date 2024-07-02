@@ -269,5 +269,12 @@ namespace C969_FB
                 }
             }
         }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            mainMenu mainMenu = new mainMenu();
+            mainMenu.Show();
+            this.Close();
+        }
     }
 }

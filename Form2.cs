@@ -66,8 +66,8 @@ namespace C969_FB
                     }
                     MessageBox.Show("username and password are correct");
                     this.Hide();
-                    ADD addForm = new ADD();
-                    addForm.Show();
+                    mainMenu mainMenu = new mainMenu();
+                    mainMenu.Show();
                     reader.Close();
                 }
                 else
