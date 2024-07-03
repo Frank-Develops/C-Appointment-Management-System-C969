@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Management;
 using System.Text;
@@ -17,7 +18,7 @@ using System.Windows.Forms;
 namespace C969_FB
 {
     public partial class Form2 : Form
-    {   
+    {
         MySqlDataReader reader;
         MySqlCommand sqlCommand;
         string country = System.Globalization.CultureInfo.CurrentCulture.Name.ToString();
@@ -33,7 +34,7 @@ namespace C969_FB
                 Logon.Text = "Iniciar sesión";
             }
             label4.Text = "User Region " + CultureInfo.CurrentCulture.Name;
-            
+
         }
 
 
@@ -44,7 +45,6 @@ namespace C969_FB
 
             string username;
             string password;
-            //DateTime currentTime = DateTime.UtcNow;
             DateTime currentTime = DateTime.Now;
 
             username = textBox1.Text;
@@ -54,12 +54,16 @@ namespace C969_FB
             {
                 MessageBox.Show(currentTime.ToString());
                 string logoncheck = "Select * FROM user WHERE userName = @username AND password = @password";
-                string getUserID = "Select userID FROM user WHERE username = @";
+                string getUserID = "Select userID FROM user WHERE username = @username";
                 string alertCheck = "SELECT START FROM Appointment WHERE userID=@userID";
                 sqlCommand = new MySqlCommand(logoncheck, Connection.conn);
                 sqlCommand.Parameters.AddWithValue("@Username", username);
                 sqlCommand.Parameters.AddWithValue("@Password", password);
                 reader = sqlCommand.ExecuteReader();
+
+
+
+
 
 
                 if (reader.Read())
@@ -75,17 +79,35 @@ namespace C969_FB
                     mainMenu.Show();
                     reader.Close();
 
+                    sqlCommand = new MySqlCommand(getUserID, Connection.conn);
+
+                    sqlCommand.Parameters.AddWithValue("@username", username);
+
+                    DataTable dt2 = new DataTable();
+                    MySqlDataAdapter sda2 = new MySqlDataAdapter(sqlCommand);
+                    sda2.Fill(dt2);
+                    string userID = "";
+
+                    foreach (DataRow row in dt2.Rows)
+                    {
+                        MessageBox.Show("this calls");
+                        userID = row["userID"].ToString();
+                        MessageBox.Show(userID);
+                    }
+                   
+                    int userIDint = int.Parse(userID);
+
                     sqlCommand = new MySqlCommand(alertCheck, Connection.conn);
-                    sqlCommand.Parameters.AddWithValue("@userID", 1);
+                    sqlCommand.Parameters.AddWithValue("@userID",userIDint);
                     sqlCommand.Parameters.AddWithValue("@start", currentTime);
                     DataTable dt = new DataTable();
                     MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
                     sda.Fill(dt);
                     foreach (DataRow dr in dt.Rows)
                     {
-                     
 
-                        string appointmentTimes =dr["start"].ToString();
+
+                        string appointmentTimes = dr["start"].ToString();
                         DateTime appointments = DateTime.Parse(appointmentTimes);
                         if (appointments >= currentTime && appointments <= currentTime.AddMinutes(15))
                         {
@@ -93,7 +115,16 @@ namespace C969_FB
                         };
                     }
 
-                   
+                    string writeUser = "test";
+                    string writeTime = currentTime.ToString();
+                    string documentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(documentPath, "Login_History.txt"), true))
+                    {
+                        outputFile.WriteLine("Username: " + writeUser + " logon time: " + writeTime);
+
+                    }
+
 
                     reader = sqlCommand.ExecuteReader();
                     reader.Close();
@@ -109,20 +140,22 @@ namespace C969_FB
                     MessageBox.Show("Incorrect logon information");
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                if (CultureInfo.CurrentCulture.Name == "es-MX")
                 {
-                    MessageBox.Show("Hubo un error");
-                    return;
-                }
-                MessageBox.Show("There was an error");
+                    if (CultureInfo.CurrentCulture.Name == "es-MX")
+                    {
+                        MessageBox.Show("Hubo un error");
+                        return;
+                    }
+                    MessageBox.Show(ex.ToString());
 
-            }
-            //finally
-            //{
+                }
+                //finally
+                //{
                 //maybe add something hear and clear text from username and password fields to allow it to do retries 
-            //}
+                //}
+            }
         }
     }
 }
