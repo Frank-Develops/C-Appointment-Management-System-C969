@@ -67,16 +67,17 @@ namespace C969_FB
                     rowCounter++;
                 }
 
-                if(DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
+                if (DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
                 {
                     MessageBox.Show("within business hours");
-                } else
+                }
+                else
                 {
                     MessageBox.Show("it is outside business hours");
                     return;
                 }
 
-              
+
 
 
                 if (rowCounter == 0)
