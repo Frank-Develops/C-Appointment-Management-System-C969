@@ -44,19 +44,24 @@ namespace C969_FB
 
             string username;
             string password;
+            //DateTime currentTime = DateTime.UtcNow;
+            DateTime currentTime = DateTime.Now;
 
             username = textBox1.Text;
             password = textBox2.Text;
 
             try
             {
+                MessageBox.Show(currentTime.ToString());
                 string logoncheck = "Select * FROM user WHERE userName = @username AND password = @password";
+                string getUserID = "Select userID FROM user WHERE username = @";
+                string alertCheck = "SELECT START FROM Appointment WHERE userID=@userID";
                 sqlCommand = new MySqlCommand(logoncheck, Connection.conn);
                 sqlCommand.Parameters.AddWithValue("@Username", username);
                 sqlCommand.Parameters.AddWithValue("@Password", password);
                 reader = sqlCommand.ExecuteReader();
-             
-               
+
+
                 if (reader.Read())
                 {
                     if (country == "es-MX")
@@ -69,6 +74,30 @@ namespace C969_FB
                     mainMenu mainMenu = new mainMenu();
                     mainMenu.Show();
                     reader.Close();
+
+                    sqlCommand = new MySqlCommand(alertCheck, Connection.conn);
+                    sqlCommand.Parameters.AddWithValue("@userID", 1);
+                    sqlCommand.Parameters.AddWithValue("@start", currentTime);
+                    DataTable dt = new DataTable();
+                    MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
+                    sda.Fill(dt);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                     
+
+                        string appointmentTimes =dr["start"].ToString();
+                        DateTime appointments = DateTime.Parse(appointmentTimes);
+                        if (appointments >= currentTime && appointments <= currentTime.AddMinutes(15))
+                        {
+                            MessageBox.Show("you have an appointment in 15 minutes");
+                        };
+                    }
+
+                   
+
+                    reader = sqlCommand.ExecuteReader();
+                    reader.Close();
+
                 }
                 else
                 {
