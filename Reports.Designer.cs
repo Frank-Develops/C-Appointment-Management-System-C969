@@ -35,13 +35,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userScheduleGrid = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userID = new System.Windows.Forms.TextBox();
+            this.userIDText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.getSchedule = new System.Windows.Forms.Button();
             this.numAppoints = new System.Windows.Forms.Button();
@@ -49,8 +47,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userScheduleGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,26 +117,16 @@
             this.Number.HeaderText = "Number";
             this.Number.Name = "Number";
             // 
-            // dataGridView2
+            // userScheduleGrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userScheduleGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.userScheduleGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dataGridView2.Location = new System.Drawing.Point(520, 175);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(240, 443);
-            this.dataGridView2.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Start";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "End";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.userScheduleGrid.Location = new System.Drawing.Point(520, 175);
+            this.userScheduleGrid.Name = "userScheduleGrid";
+            this.userScheduleGrid.Size = new System.Drawing.Size(240, 443);
+            this.userScheduleGrid.TabIndex = 5;
             // 
             // dataGridView3
             // 
@@ -159,13 +149,13 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Number of Appointments";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // userID
+            // userIDText
             // 
-            this.userID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.userID.Location = new System.Drawing.Point(660, 85);
-            this.userID.Name = "userID";
-            this.userID.Size = new System.Drawing.Size(100, 26);
-            this.userID.TabIndex = 7;
+            this.userIDText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.userIDText.Location = new System.Drawing.Point(660, 85);
+            this.userIDText.Name = "userIDText";
+            this.userIDText.Size = new System.Drawing.Size(100, 26);
+            this.userIDText.TabIndex = 7;
             // 
             // label4
             // 
@@ -186,6 +176,7 @@
             this.getSchedule.TabIndex = 9;
             this.getSchedule.Text = "Get Schedule";
             this.getSchedule.UseVisualStyleBackColor = true;
+            this.getSchedule.Click += new System.EventHandler(this.getSchedule_Click);
             // 
             // numAppoints
             // 
@@ -233,6 +224,18 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "report.";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Start";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Start";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "End";
+            this.dataGridViewTextBoxColumn2.HeaderText = "End";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,9 +249,9 @@
             this.Controls.Add(this.numAppoints);
             this.Controls.Add(this.getSchedule);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.userID);
+            this.Controls.Add(this.userIDText);
             this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.userScheduleGrid);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -257,7 +260,7 @@
             this.Name = "Reports";
             this.Text = "Reports";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userScheduleGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,13 +276,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridView userScheduleGrid;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.TextBox userID;
+        private System.Windows.Forms.TextBox userIDText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button getSchedule;
         private System.Windows.Forms.Button numAppoints;
@@ -287,5 +288,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

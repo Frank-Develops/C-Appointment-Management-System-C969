@@ -132,7 +132,6 @@
             this.localTime.TabStop = true;
             this.localTime.Text = "Local Time";
             this.localTime.UseVisualStyleBackColor = true;
-            this.localTime.CheckedChanged += new System.EventHandler(this.localTime_CheckedChanged);
             // 
             // utcTime
             // 
@@ -144,7 +143,6 @@
             this.utcTime.TabIndex = 4;
             this.utcTime.Text = "UTC Time";
             this.utcTime.UseVisualStyleBackColor = true;
-            this.utcTime.CheckedChanged += new System.EventHandler(this.utcTime_CheckedChanged);
             // 
             // calendar
             // 

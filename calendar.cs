@@ -17,7 +17,7 @@ namespace C969_FB
     {
         MySqlCommand sqlCommand;
         private BindingList<appointment> SelectedAppointments = new BindingList<appointment>();
-        private bool timeZone = false;
+     
         public calendar()
         {
             InitializeComponent();
@@ -86,14 +86,6 @@ namespace C969_FB
 
         }
 
-        private void localTime_CheckedChanged(object sender, EventArgs e)
-        {
-            timeZone = false;
-        }
-
-        private void utcTime_CheckedChanged(object sender, EventArgs e)
-        {
-            timeZone = true;
-        }
+        
     }
 }
