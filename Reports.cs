@@ -69,10 +69,20 @@ namespace C969_FB
             int userID = int.Parse(userIDText.Text);
 
             var userSchedule = appointment.Appointments.Where(x => x.userID == userID).ToList();
-            MessageBox.Show(userSchedule.ToString());
+
 
             userScheduleGrid.DataSource = userSchedule;
-       
+
+        }
+
+        private void numAppoints_Click(object sender, EventArgs e)
+        {
+            int customerID = int.Parse(customerIDText.Text);
+
+            var customerAppointments = appointment.Appointments.Count(x => x.customerID == customerID);
+            MessageBox.Show("this customer has " + customerAppointments + " appointments");
+            
+
         }
     }
 }

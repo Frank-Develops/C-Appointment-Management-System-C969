@@ -36,9 +36,6 @@
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userScheduleGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userIDText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.getSchedule = new System.Windows.Forms.Button();
@@ -49,15 +46,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerIDText = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userScheduleGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // goBack
             // 
             this.goBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.goBack.Location = new System.Drawing.Point(1100, 555);
+            this.goBack.Location = new System.Drawing.Point(1138, 565);
             this.goBack.Name = "goBack";
             this.goBack.Size = new System.Drawing.Size(153, 63);
             this.goBack.TabIndex = 0;
@@ -90,7 +89,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(868, 19);
+            this.label3.Location = new System.Drawing.Point(858, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(287, 20);
             this.label3.TabIndex = 3;
@@ -128,27 +127,6 @@
             this.userScheduleGrid.Size = new System.Drawing.Size(240, 443);
             this.userScheduleGrid.TabIndex = 5;
             // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dataGridView3.Location = new System.Drawing.Point(892, 106);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(240, 443);
-            this.dataGridView3.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Customer ID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Number of Appointments";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
             // userIDText
             // 
             this.userIDText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -181,12 +159,13 @@
             // numAppoints
             // 
             this.numAppoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.numAppoints.Location = new System.Drawing.Point(892, 55);
+            this.numAppoints.Location = new System.Drawing.Point(872, 126);
             this.numAppoints.Name = "numAppoints";
             this.numAppoints.Size = new System.Drawing.Size(240, 45);
             this.numAppoints.TabIndex = 10;
-            this.numAppoints.Text = "Generate Reports";
+            this.numAppoints.Text = "Generate Report";
             this.numAppoints.UseVisualStyleBackColor = true;
+            this.numAppoints.Click += new System.EventHandler(this.numAppoints_Click);
             // 
             // monthCalendar1
             // 
@@ -236,12 +215,43 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "End";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
+            // customerIDText
+            // 
+            this.customerIDText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.customerIDText.Location = new System.Drawing.Point(1045, 82);
+            this.customerIDText.Name = "customerIDText";
+            this.customerIDText.Size = new System.Drawing.Size(100, 26);
+            this.customerIDText.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label8.Location = new System.Drawing.Point(858, 85);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(142, 20);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Enter Customer ID";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label9.Location = new System.Drawing.Point(868, 206);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(281, 20);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "The results will show in a Message Box";
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1303, 630);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.customerIDText);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -250,7 +260,6 @@
             this.Controls.Add(this.getSchedule);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.userIDText);
-            this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.userScheduleGrid);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
@@ -261,7 +270,6 @@
             this.Text = "Reports";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userScheduleGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,9 +285,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridView userScheduleGrid;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.TextBox userIDText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button getSchedule;
@@ -290,5 +295,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.TextBox customerIDText;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
