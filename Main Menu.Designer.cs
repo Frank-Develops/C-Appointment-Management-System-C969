@@ -87,6 +87,7 @@
             this.reports.TabIndex = 4;
             this.reports.Text = "Reports";
             this.reports.UseVisualStyleBackColor = true;
+            this.reports.Click += new System.EventHandler(this.reports_Click);
             // 
             // mainMenu
             // 

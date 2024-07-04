@@ -52,7 +52,7 @@ namespace C969_FB
 
             try
             {
-                MessageBox.Show(currentTime.ToString());
+                
                 string logoncheck = "Select * FROM user WHERE userName = @username AND password = @password";
                 string getUserID = "Select userID FROM user WHERE username = @username";
                 string alertCheck = "SELECT START FROM Appointment WHERE userID=@userID";
@@ -90,9 +90,9 @@ namespace C969_FB
 
                     foreach (DataRow row in dt2.Rows)
                     {
-                        MessageBox.Show("this calls");
+                        
                         userID = row["userID"].ToString();
-                        MessageBox.Show(userID);
+                        
                     }
                    
                     int userIDint = int.Parse(userID);

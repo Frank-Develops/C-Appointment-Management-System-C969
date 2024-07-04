@@ -21,7 +21,7 @@ namespace C969_FB
         public calendar()
         {
             InitializeComponent();
-            //appointmentCalGrid.DataSource = appointment.Appointments;
+        
             try
             {
                 string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end FROM appointment";
@@ -39,16 +39,7 @@ namespace C969_FB
                     string location = dr["location"].ToString();
                     DateTime start = DateTime.Parse(dr["start"].ToString());
                     DateTime end = DateTime.Parse(dr["end"].ToString());
-                    //if (timeZone == false)
-                    //{
-                        ////start.ToLocalTime();
-                        ////end.ToLocalTime();
-                    //} else
-                    //{
-                    //    start.ToUniversalTime();
-                    //    end.ToUniversalTime();
-                    //}
-
+                    
                     appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start.ToLocalTime(), end.ToLocalTime()));
                 }
             }
@@ -61,10 +52,7 @@ namespace C969_FB
 
                     }
                 }
-                //finally
-                //{
-                //    if
-                //}
+             
             }
         }
 
