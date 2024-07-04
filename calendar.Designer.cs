@@ -38,6 +38,8 @@
             this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.localTime = new System.Windows.Forms.RadioButton();
+            this.utcTime = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentCalGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,12 +120,40 @@
             this.End.HeaderText = "End";
             this.End.Name = "End";
             // 
+            // localTime
+            // 
+            this.localTime.AutoSize = true;
+            this.localTime.Checked = true;
+            this.localTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.localTime.Location = new System.Drawing.Point(341, 448);
+            this.localTime.Name = "localTime";
+            this.localTime.Size = new System.Drawing.Size(103, 24);
+            this.localTime.TabIndex = 3;
+            this.localTime.TabStop = true;
+            this.localTime.Text = "Local Time";
+            this.localTime.UseVisualStyleBackColor = true;
+            this.localTime.CheckedChanged += new System.EventHandler(this.localTime_CheckedChanged);
+            // 
+            // utcTime
+            // 
+            this.utcTime.AutoSize = true;
+            this.utcTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.utcTime.Location = new System.Drawing.Point(498, 448);
+            this.utcTime.Name = "utcTime";
+            this.utcTime.Size = new System.Drawing.Size(97, 24);
+            this.utcTime.TabIndex = 4;
+            this.utcTime.Text = "UTC Time";
+            this.utcTime.UseVisualStyleBackColor = true;
+            this.utcTime.CheckedChanged += new System.EventHandler(this.utcTime_CheckedChanged);
+            // 
             // calendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1204, 553);
+            this.Controls.Add(this.utcTime);
+            this.Controls.Add(this.localTime);
             this.Controls.Add(this.appointmentCalGrid);
             this.Controls.Add(this.appointmentCalandar);
             this.Controls.Add(this.goBack);
@@ -131,6 +161,7 @@
             this.Text = "calendar";
             ((System.ComponentModel.ISupportInitialize)(this.appointmentCalGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -146,5 +177,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Location;
         private System.Windows.Forms.DataGridViewTextBoxColumn Start;
         private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.RadioButton localTime;
+        private System.Windows.Forms.RadioButton utcTime;
     }
 }

@@ -17,6 +17,7 @@ namespace C969_FB
     {
         MySqlCommand sqlCommand;
         private BindingList<appointment> SelectedAppointments = new BindingList<appointment>();
+        private bool timeZone = false;
         public calendar()
         {
             InitializeComponent();
@@ -38,8 +39,17 @@ namespace C969_FB
                     string location = dr["location"].ToString();
                     DateTime start = DateTime.Parse(dr["start"].ToString());
                     DateTime end = DateTime.Parse(dr["end"].ToString());
+                    //if (timeZone == false)
+                    //{
+                        ////start.ToLocalTime();
+                        ////end.ToLocalTime();
+                    //} else
+                    //{
+                    //    start.ToUniversalTime();
+                    //    end.ToUniversalTime();
+                    //}
 
-                    appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start, end));
+                    appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start.ToLocalTime(), end.ToLocalTime()));
                 }
             }
             catch (Exception ex)
@@ -86,6 +96,16 @@ namespace C969_FB
             }
             appointmentCalGrid.DataSource = SelectedAppointments;
 
+        }
+
+        private void localTime_CheckedChanged(object sender, EventArgs e)
+        {
+            timeZone = false;
+        }
+
+        private void utcTime_CheckedChanged(object sender, EventArgs e)
+        {
+            timeZone = true;
         }
     }
 }
