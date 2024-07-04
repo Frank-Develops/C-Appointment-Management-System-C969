@@ -10,6 +10,7 @@ namespace C969_FB
     internal class appointment
     {
         public static BindingList<appointment> Appointments = new BindingList<appointment>();
+        //private BindingList<appointment> SelectedAppointments = new BindingList<appointment>();
 
         public int appointmentID { get; set; }
         public int customerID { get; set; }

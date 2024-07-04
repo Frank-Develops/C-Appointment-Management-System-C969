@@ -16,10 +16,11 @@ namespace C969_FB
     public partial class calendar : Form
     {
         MySqlCommand sqlCommand;
+        private BindingList<appointment> SelectedAppointments = new BindingList<appointment>();
         public calendar()
         {
             InitializeComponent();
-            appointmentCalGrid.DataSource = appointment.Appointments;
+            //appointmentCalGrid.DataSource = appointment.Appointments;
             try
             {
                 string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end FROM appointment";
@@ -66,8 +67,25 @@ namespace C969_FB
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            //build function to get all appointments
-            //generate appointments in DataGridView based off what is selected
+            SelectedAppointments.Clear();
+
+            DateTime selectedDate = appointmentCalandar.SelectionRange.Start;
+
+            foreach (appointment appoint in appointment.Appointments)
+            {
+                if (appoint.start.Day == selectedDate.Day)
+                {
+                    if (appoint.start.Month == selectedDate.Month)
+                    {
+                        if (appoint.start.Year == selectedDate.Year)
+                        {
+                            SelectedAppointments.Add(appoint);
+                        }
+                    }
+                }
+            }
+            appointmentCalGrid.DataSource = SelectedAppointments;
+
         }
     }
 }
