@@ -104,6 +104,7 @@
     <Compile Include="ADD.Designer.cs">
       <DependentUpon>ADD.cs</DependentUpon>
     </Compile>
+    <Compile Include="appointment.cs" />
     <Compile Include="appointments.cs">
       <SubType>Form</SubType>
     </Compile>

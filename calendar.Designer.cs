@@ -84,31 +84,37 @@
             // 
             // CustomerID
             // 
+            this.CustomerID.DataPropertyName = "customerID";
             this.CustomerID.HeaderText = "Customer ID";
             this.CustomerID.Name = "CustomerID";
             // 
             // UserID
             // 
+            this.UserID.DataPropertyName = "userID";
             this.UserID.HeaderText = "UserID";
             this.UserID.Name = "UserID";
             // 
             // Title
             // 
+            this.Title.DataPropertyName = "title";
             this.Title.HeaderText = "Title";
             this.Title.Name = "Title";
             // 
             // Location
             // 
+            this.Location.DataPropertyName = "location";
             this.Location.HeaderText = "Location";
             this.Location.Name = "Location";
             // 
             // Start
             // 
+            this.Start.DataPropertyName = "start";
             this.Start.HeaderText = "Start";
             this.Start.Name = "Start";
             // 
             // End
             // 
+            this.End.DataPropertyName = "end";
             this.End.HeaderText = "End";
             this.End.Name = "End";
             // 
