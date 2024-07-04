@@ -23,5 +23,10 @@ namespace C969_FB
             Appointments appointments = new Appointments();
             appointments.Show();
         }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
     }
 }
