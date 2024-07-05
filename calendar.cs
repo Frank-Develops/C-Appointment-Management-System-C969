@@ -24,6 +24,8 @@ namespace C969_FB
         
             try
             {
+                appointment.Appointments.Clear();
+
                 string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end, type FROM appointment";
                 sqlCommand = new MySqlCommand(appointmentGetter, Connection.conn);
 

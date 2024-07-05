@@ -14,12 +14,12 @@ namespace C969_FB
     public partial class Reports : Form
     {
         MySqlCommand sqlCommand;
-        //private BindingList<appointment> AppointmentsReport = new BindingList<appointment>();
         public Reports()
         {
             InitializeComponent();
             try
             {
+                appointment.Appointments.Clear();
                 string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end, type FROM appointment";
                 sqlCommand = new MySqlCommand(appointmentGetter, Connection.conn);
 
@@ -88,6 +88,8 @@ namespace C969_FB
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
+          
+            
             DateTime selectedDate = monthCalendar1.SelectionRange.Start;
             int month = selectedDate.Month;
             int year = selectedDate.Year;
