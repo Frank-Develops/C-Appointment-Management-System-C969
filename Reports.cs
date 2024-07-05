@@ -67,7 +67,7 @@ namespace C969_FB
 
         private void getSchedule_Click(object sender, EventArgs e)
         {
-            int userID = int.Parse(typeBox.Text);
+            int userID = int.Parse(userIDBox.Text);
 
             var userSchedule = appointment.Appointments.Where(x => x.userID == userID).ToList();
 

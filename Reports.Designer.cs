@@ -33,20 +33,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.userScheduleGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.getSchedule = new System.Windows.Forms.Button();
             this.numAppoints = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerIDText = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label10 = new System.Windows.Forms.Label();
+            this.userIDBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.userScheduleGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,6 +103,18 @@
             this.userScheduleGrid.Name = "userScheduleGrid";
             this.userScheduleGrid.Size = new System.Drawing.Size(240, 443);
             this.userScheduleGrid.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Start";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Start";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "End";
+            this.dataGridViewTextBoxColumn2.HeaderText = "End";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // typeBox
             // 
@@ -163,18 +176,6 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "to get report in Message Box";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Start";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Start";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "End";
-            this.dataGridViewTextBoxColumn2.HeaderText = "End";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
             // customerIDText
             // 
             this.customerIDText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -230,12 +231,21 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "Enter Appointment Type";
             // 
+            // userIDBox
+            // 
+            this.userIDBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.userIDBox.Location = new System.Drawing.Point(647, 82);
+            this.userIDBox.Name = "userIDBox";
+            this.userIDBox.Size = new System.Drawing.Size(100, 26);
+            this.userIDBox.TabIndex = 19;
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1303, 630);
+            this.Controls.Add(this.userIDBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -282,5 +292,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox userIDBox;
     }
 }

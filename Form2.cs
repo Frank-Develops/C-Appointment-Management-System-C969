@@ -121,7 +121,7 @@ namespace C969_FB
 
                     string writeUser = "test";
                     string writeTime = currentTime.ToString();
-                    string documentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    string documentPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
                     using (StreamWriter outputFile = new StreamWriter(Path.Combine(documentPath, "Login_History.txt"), true))
                     {

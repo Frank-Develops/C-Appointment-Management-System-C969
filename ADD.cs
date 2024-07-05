@@ -29,16 +29,21 @@ namespace C969_FB
 
         private void addCustomer_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(nameField.Text) || String.IsNullOrEmpty(addressField.Text) || String.IsNullOrEmpty(cityField.Text) || String.IsNullOrEmpty(stateField.Text) || String.IsNullOrEmpty(countryField.Text) || String.IsNullOrEmpty(zipField.Text) || String.IsNullOrEmpty(phoneField.Text))
+            {
+                MessageBox.Show("please fill out all fields");
+                return;
+            }
 
-            string name = nameField.Text;
-            string address = addressField.Text;
-            string city = cityField.Text;
-            string state = stateField.Text;
-            string country = countryField.Text;
-            int phone = int.Parse(phoneField.Text);
-            string zipCode = zipField.Text;
+            string name = nameField.Text.Trim();
+            string address = addressField.Text.Trim();
+            string city = cityField.Text.Trim();
+            string state = stateField.Text.Trim();
+            string country = countryField.Text.Trim();
+            string phone = phoneField.Text.Replace("-", string.Empty).Trim();
+            string zipCode = zipField.Text.Trim();
 
-
+        
 
             try
             {
@@ -85,15 +90,15 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@addressID", addressIDint);
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
-
+                MessageBox.Show("Customer Added");
 
 
             }
-            catch (Exception ex)
+            catch 
             {
                 {
 
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("The Add Customer Process Failed, please make sure all fields are correct");
 
                 }
             }
@@ -106,10 +111,7 @@ namespace C969_FB
             }
         }
 
-        //private void ADD_Load(object sender, EventArgs e)
-        //{
-
-        //}
+   
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
@@ -117,6 +119,11 @@ namespace C969_FB
             try
             {
 
+                if (string.IsNullOrEmpty(deleteField.Text))
+                {
+                    MessageBox.Show("Please Enter the Customer ID you want to delete");
+                    return;
+                }
 
                 int delete = int.Parse(deleteField.Text);
 
@@ -148,12 +155,13 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@deleteID", delete);
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
+                MessageBox.Show("Customer Deleted");
             }
-            catch (Exception ex)
+            catch
             {
                 {
 
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("These is no customer with that ID, please make sure all fields are correct");
 
                 }
             }
@@ -176,17 +184,19 @@ namespace C969_FB
         {
             try
             {
-                string name = nameUpdateField.Text;
-                string address = addressUpdateField.Text;
-                string city = cityUpdateField.Text;
-                string state = stateUpdateField.Text;
-                string country = countryUpdateField.Text;
-                string phone = phoneUpdateField.Text;
-                string zipCode = zipUpdateField.Text;
+                if (String.IsNullOrEmpty(nameUpdateField.Text) || String.IsNullOrEmpty(addressUpdateField.Text) || String.IsNullOrEmpty(cityUpdateField.Text) || String.IsNullOrEmpty(stateUpdateField.Text) || String.IsNullOrEmpty(countryUpdateField.Text) || String.IsNullOrEmpty(zipUpdateField.Text) || String.IsNullOrEmpty(phoneUpdateField.Text) || String.IsNullOrEmpty(customerIDField.Text))
+                {
+                    MessageBox.Show("please fill out all fields");
+                    return;
+                }
+                string name = nameUpdateField.Text.Trim();
+                string address = addressUpdateField.Text.Trim();
+                string city = cityUpdateField.Text.Trim();
+                string state = stateUpdateField.Text.Trim();
+                string country = countryUpdateField.Text.Trim();
+                string phone = phoneUpdateField.Text.Replace("-", string.Empty).Trim();
+                string zipCode = zipUpdateField.Text.Trim();
                 int customerID = int.Parse(customerIDField.Text);
-
-
-
 
 
 
@@ -246,16 +256,15 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@name", name);
                 sqlCommand.Parameters.AddWithValue("@addressID", addressIDint);
                 sqlCommand.Parameters.AddWithValue("@customerID", customerID);
-                //sqlCommand.ExecuteNonQuery();
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
 
             }
-            catch (Exception ex)
+            catch 
             {
                 {
 
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("The update operation failed, this could be because these is no customer with that ID");
 
                 }
             }
