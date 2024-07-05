@@ -43,6 +43,14 @@ namespace C969_FB
             string phone = phoneField.Text.Replace("-", string.Empty).Trim();
             string zipCode = zipField.Text.Trim();
 
+            try
+            {
+                int.Parse(phone);
+            } catch
+            {
+                MessageBox.Show("please enter only digits and dashed for the phone number");
+                return;
+            }
         
 
             try
@@ -198,6 +206,15 @@ namespace C969_FB
                 string zipCode = zipUpdateField.Text.Trim();
                 int customerID = int.Parse(customerIDField.Text);
 
+                try
+                {
+                    int.Parse(phone);
+                }
+                catch
+                {
+                    MessageBox.Show("please enter only digits and dashed for the phone number");
+                    return;
+                }
 
 
                 string updateCustomer = "UPDATE CUSTOMER SET customerName=@name, addressID=@addressID WHERE customerID = @customerID;";
@@ -258,6 +275,7 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@customerID", customerID);
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
+                MessageBox.Show("Customer Updated");
 
             }
             catch 
@@ -285,5 +303,6 @@ namespace C969_FB
             mainMenu.Show();
             this.Close();
         }
+       
     }
 }
