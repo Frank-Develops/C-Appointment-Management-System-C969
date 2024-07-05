@@ -17,13 +17,13 @@ using System.Windows.Forms;
 
 namespace C969_FB
 {
-    public partial class Form2 : Form
+    public partial class LogonForm : Form
     {
         MySqlDataReader reader;
         MySqlCommand sqlCommand;
         string country = System.Globalization.CultureInfo.CurrentCulture.Name.ToString();
 
-        public Form2()
+        public LogonForm()
         {
             InitializeComponent();
          

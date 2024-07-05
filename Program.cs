@@ -17,7 +17,7 @@ namespace C969_FB
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Connection.startConnect();
-            Application.Run(new Form2());
+            Application.Run(new LogonForm());
             Connection.closeConnect();
         }
     }
