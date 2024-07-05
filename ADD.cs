@@ -183,10 +183,6 @@ namespace C969_FB
             }
         }
 
-        private void ADD_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void updateCustomer_Click(object sender, EventArgs e)
         {

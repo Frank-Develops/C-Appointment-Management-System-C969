@@ -466,7 +466,6 @@
             this.Controls.Add(this.label1);
             this.Name = "ADD";
             this.Text = "ADD";
-            this.Load += new System.EventHandler(this.ADD_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -87,11 +87,11 @@ namespace C969_FB
 
                 if (DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
                 {
-                    MessageBox.Show("within business hours");
+                    MessageBox.Show("The office is open then");
                 }
                 else
                 {
-                    MessageBox.Show("it is outside business hours");
+                    MessageBox.Show("it is outside business hours, please schedule another time");
                     return;
                 }
 
@@ -100,7 +100,7 @@ namespace C969_FB
 
                 if (rowCounter == 0)
                 {
-                    MessageBox.Show("no overlap");
+                
 
 
                     string insertAppointment = "INSERT INTO APPOINTMENT(customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(@customerID, @userID, @title, @description, @location, @contact, @type, 'fake', @start, @end, '2024-06-29 00:00:00', 'test', '2024-06-29 00:00:00', 'test');";
@@ -122,7 +122,7 @@ namespace C969_FB
                 }
                 else
                 {
-                    MessageBox.Show("there is already an appointment at this time");
+                    MessageBox.Show("there is already an appointment at this time, please schedule another time");
                 }
             }
             catch (Exception ex)
@@ -199,17 +199,17 @@ namespace C969_FB
 
                 if (DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
                 {
-                    MessageBox.Show("within business hours");
+                    MessageBox.Show("The office is open then");
                 }
                 else
                 {
-                    MessageBox.Show("it is outside business hours");
+                    MessageBox.Show("That is outside business hours, please schedule another time");
                     return;
                 }
 
                 if (rowCounter == 0)
                 {
-                    MessageBox.Show("no overlap");
+                   
 
 
                     string updateAppointment = "UPDATE APPOINTMENT SET customerID = @customerID, userID = @userID, title=@title, description = @description, location = @location, contact = @contact, type=@type, start=@start, end=@end WHERE appointmentID = @appointmentID;";
@@ -233,7 +233,7 @@ namespace C969_FB
                 }
                 else
                 {
-                    MessageBox.Show("there is already an appointment at this time");
+                    MessageBox.Show("there is already an appointment at this time, please schedule another time");
                 }
             }
             catch (Exception ex)
