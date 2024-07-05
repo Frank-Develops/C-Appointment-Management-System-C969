@@ -10,7 +10,6 @@ namespace C969_FB
     internal class appointment
     {
         public static BindingList<appointment> Appointments = new BindingList<appointment>();
-        //private BindingList<appointment> SelectedAppointments = new BindingList<appointment>();
 
         public int appointmentID { get; set; }
         public int customerID { get; set; }
@@ -19,10 +18,11 @@ namespace C969_FB
         public string location { get; set; }
         public DateTime start { get; set; }
         public DateTime end { get; set; }
+        public string type { get; set; }
 
         public appointment() { }
 
-        public appointment(int appointmentID, int customerID, int userID, string title, string location, DateTime start, DateTime end)
+        public appointment(int appointmentID, int customerID, int userID, string title, string location, DateTime start, DateTime end, string type)
         {
             this.appointmentID = appointmentID;
             this.customerID = customerID;
@@ -31,6 +31,7 @@ namespace C969_FB
             this.location = location;
             this.start = start;
             this.end = end;
+            this.type = type;
         }
 
         public static void addAppointment(appointment a)

@@ -3,29 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace C969_FB
 {
-    public partial class calendar : Form
+    public partial class Reports : Form
     {
         MySqlCommand sqlCommand;
-        private BindingList<appointment> SelectedAppointments = new BindingList<appointment>();
-     
-        public calendar()
+        public Reports()
         {
             InitializeComponent();
-        
             try
             {
                 appointment.Appointments.Clear();
-
                 string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end, type FROM appointment";
                 sqlCommand = new MySqlCommand(appointmentGetter, Connection.conn);
 
@@ -42,7 +36,7 @@ namespace C969_FB
                     DateTime start = DateTime.Parse(dr["start"].ToString());
                     DateTime end = DateTime.Parse(dr["end"].ToString());
                     string type = dr["type"].ToString();
-                    
+
                     appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start.ToLocalTime(), end.ToLocalTime(), type));
                 }
             }
@@ -55,40 +49,58 @@ namespace C969_FB
 
                     }
                 }
-             
+
             }
         }
 
         private void goBack_Click(object sender, EventArgs e)
         {
             this.Close();
-            Appointments appointments = new Appointments();
-            appointments.Show();
+            mainMenu main = new mainMenu();
+            main.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void getSchedule_Click(object sender, EventArgs e)
+        {
+            int userID = int.Parse(typeBox.Text);
+
+            var userSchedule = appointment.Appointments.Where(x => x.userID == userID).ToList();
+
+
+            userScheduleGrid.DataSource = userSchedule;
+
+        }
+
+        private void numAppoints_Click(object sender, EventArgs e)
+        {
+            int customerID = int.Parse(customerIDText.Text);
+
+            var customerAppointments = appointment.Appointments.Count(x => x.customerID == customerID);
+            MessageBox.Show("this customer has " + customerAppointments + " appointments");
+            
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            SelectedAppointments.Clear();
+          
+            
+            DateTime selectedDate = monthCalendar1.SelectionRange.Start;
+            int month = selectedDate.Month;
+            int year = selectedDate.Year;
+            string type = typeBox.Text;
 
-            DateTime selectedDate = appointmentCalandar.SelectionRange.Start;
-
-            foreach (appointment appoint in appointment.Appointments)
-            {
-                if (appoint.start.Day == selectedDate.Day)
-                {
-                    if (appoint.start.Month == selectedDate.Month)
-                    {
-                        if (appoint.start.Year == selectedDate.Year)
-                        {
-                            SelectedAppointments.Add(appoint);
-                        }
-                    }
-                }
-            }
-            appointmentCalGrid.DataSource = SelectedAppointments;
+            var monthAppointments = appointment.Appointments.Where(x => x.start.Month == month);
+            var yearAppointments = monthAppointments.Where(x => x.start.Year == year);
+            var typeAppointments = yearAppointments.Count(x => x.type == type);
+            
+            MessageBox.Show("There are " + typeAppointments + " " + type + " of appointments in the selected month");
 
         }
-
-        
     }
 }

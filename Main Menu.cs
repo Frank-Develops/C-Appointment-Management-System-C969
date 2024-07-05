@@ -36,5 +36,12 @@ namespace C969_FB
             appoint.Show();
             this.Hide();
         }
+
+        private void reports_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Reports reports = new Reports();
+            reports.Show();
+        }
     }
 }
