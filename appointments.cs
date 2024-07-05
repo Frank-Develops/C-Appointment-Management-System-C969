@@ -36,6 +36,15 @@ namespace C969_FB
         {
             try
             {
+                if (String.IsNullOrEmpty(customerIDBox.Text) || String.IsNullOrEmpty(userIDBox.Text) || String.IsNullOrEmpty(titleBox.Text) || String.IsNullOrEmpty(descriptionBox.Text) || String.IsNullOrEmpty(locationBox.Text) || String.IsNullOrEmpty(contactBox.Text) || String.IsNullOrEmpty(typeBox.Text) || String.IsNullOrEmpty(startBox.Text) || String.IsNullOrEmpty(endBox.Text))
+                {
+
+                    MessageBox.Show("please fill out all fields");
+                    return;
+                }
+              
+
+
                 int customerID = int.Parse(customerIDBox.Text);
                 int userID = int.Parse(userIDBox.Text);
                 string title = titleBox.Text;
@@ -49,9 +58,18 @@ namespace C969_FB
                 string close = "2024-12-10 17:00:00";
 
 
-                // YYYY-MM-DD hh:mm:ss.
-                //2024-12-10 06:05:00
-                //2024-12-10 07:05:00
+
+                try
+                {
+                    DateTime.Parse(start);
+                    DateTime.Parse(end);
+                } catch {
+
+                    MessageBox.Show("Please enter Start and End times in YYYY-MM-DD hh:mm:ss format");
+                    return;
+                }
+
+           
 
                 string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START <= @end AND END >= @start";
 
@@ -99,6 +117,8 @@ namespace C969_FB
                     sqlCommand.Parameters.AddWithValue("@end", end);
                     reader = sqlCommand.ExecuteReader();
                     reader.Close();
+                    MessageBox.Show("Appointment has been added");
+
                 }
                 else
                 {
@@ -109,7 +129,7 @@ namespace C969_FB
             {
                 {
 
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("There was an error with adding the appointment");
 
                 }
 
@@ -123,15 +143,18 @@ namespace C969_FB
             }
         }
 
-        private void customerID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void updateAppointment_Click(object sender, EventArgs e)
         {
             try
             {
+                if (String.IsNullOrEmpty(customerIDUpdate.Text) || String.IsNullOrEmpty(userIDUpdate.Text) || String.IsNullOrEmpty(titleUpdate.Text) || String.IsNullOrEmpty(descriptionUpdate.Text) || String.IsNullOrEmpty(locationUpdate.Text) || String.IsNullOrEmpty(contactUpdate.Text) || String.IsNullOrEmpty(typeUpdate.Text) || String.IsNullOrEmpty(startUpdate.Text) || String.IsNullOrEmpty(endUpdate.Text) || String.IsNullOrEmpty(appointmentIDUpdate.Text))
+                {
+
+                    MessageBox.Show("please fill out all fields");
+                    return;
+                }
                 int customerID = int.Parse(customerIDUpdate.Text);
                 int userID = int.Parse(userIDUpdate.Text);
                 string title = titleUpdate.Text;
@@ -145,10 +168,20 @@ namespace C969_FB
                 string open = "2024-12-10 08:00:00";
                 string close = "2024-12-10 17:00:00";
 
+                try
+                {
+                    DateTime.Parse(start);
+                    DateTime.Parse(end);
+                }
+                catch
+                {
 
-                // YYYY-MM-DD hh:mm:ss.
-                //2024-12-10 06:05:00
-                //2024-12-10 07:05:00
+                    MessageBox.Show("Please enter Start and End times in YYYY-MM-DD hh:mm:ss format");
+                    return;
+                }
+
+
+                
 
                 string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START <= @end AND END >= @start";
 
@@ -194,6 +227,9 @@ namespace C969_FB
                     sqlCommand.Parameters.AddWithValue("@appointmentID", appointmentID);
                     reader = sqlCommand.ExecuteReader();
                     reader.Close();
+                    MessageBox.Show("Appointment has been updated");
+                    
+
                 }
                 else
                 {
@@ -204,7 +240,8 @@ namespace C969_FB
             {
                 {
 
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("There was an error with updating the appointment, please make sure all information is correct ");
+
 
                 }
 
@@ -229,13 +266,15 @@ namespace C969_FB
                 sqlCommand.Parameters.AddWithValue("@appointmentID", appointmentID);
                 reader = sqlCommand.ExecuteReader();
                 reader.Close();
+                MessageBox.Show("Appointment has been deleted");
+
 
             }
             catch (Exception ex)
-            //maybe make that MYSQL exception
+            
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("There is no appointment with that ID");
 
             }
 
