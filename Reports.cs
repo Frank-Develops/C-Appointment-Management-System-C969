@@ -20,7 +20,7 @@ namespace C969_FB
             InitializeComponent();
             try
             {
-                string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end FROM appointment";
+                string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end, type FROM appointment";
                 sqlCommand = new MySqlCommand(appointmentGetter, Connection.conn);
 
                 DataTable dt = new DataTable();
@@ -35,8 +35,9 @@ namespace C969_FB
                     string location = dr["location"].ToString();
                     DateTime start = DateTime.Parse(dr["start"].ToString());
                     DateTime end = DateTime.Parse(dr["end"].ToString());
+                    string type = dr["type"].ToString();
 
-                    appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start.ToLocalTime(), end.ToLocalTime()));
+                    appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start.ToLocalTime(), end.ToLocalTime(), type));
                 }
             }
             catch (Exception ex)
@@ -66,7 +67,7 @@ namespace C969_FB
 
         private void getSchedule_Click(object sender, EventArgs e)
         {
-            int userID = int.Parse(userIDText.Text);
+            int userID = int.Parse(typeBox.Text);
 
             var userSchedule = appointment.Appointments.Where(x => x.userID == userID).ToList();
 
@@ -82,6 +83,21 @@ namespace C969_FB
             var customerAppointments = appointment.Appointments.Count(x => x.customerID == customerID);
             MessageBox.Show("this customer has " + customerAppointments + " appointments");
             
+
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            DateTime selectedDate = monthCalendar1.SelectionRange.Start;
+            int month = selectedDate.Month;
+            int year = selectedDate.Year;
+            string type = typeBox.Text;
+
+            var monthAppointments = appointment.Appointments.Where(x => x.start.Month == month);
+            var yearAppointments = monthAppointments.Where(x => x.start.Year == year);
+            var typeAppointments = yearAppointments.Count(x => x.type == type);
+            
+            MessageBox.Show("There are " + typeAppointments + " " + type + " of appointments in the selected month");
 
         }
     }

@@ -24,7 +24,7 @@ namespace C969_FB
         
             try
             {
-                string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end FROM appointment";
+                string appointmentGetter = "SELECT appointmentID, customerID, userID, title, location, start, end, type FROM appointment";
                 sqlCommand = new MySqlCommand(appointmentGetter, Connection.conn);
 
                 DataTable dt = new DataTable();
@@ -39,8 +39,9 @@ namespace C969_FB
                     string location = dr["location"].ToString();
                     DateTime start = DateTime.Parse(dr["start"].ToString());
                     DateTime end = DateTime.Parse(dr["end"].ToString());
+                    string type = dr["type"].ToString();
                     
-                    appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start.ToLocalTime(), end.ToLocalTime()));
+                    appointment.addAppointment(new appointment(appointmentID, customerID, userID, title, location, start.ToLocalTime(), end.ToLocalTime(), type));
                 }
             }
             catch (Exception ex)
