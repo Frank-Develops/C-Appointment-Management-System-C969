@@ -26,23 +26,27 @@ namespace C969_FB
         public Form2()
         {
             InitializeComponent();
+            label4.Text = "User Region " + CultureInfo.CurrentCulture.Name;
+
             if (country == "es-MX")
             {
                 label1.Text = "Iniciar sesión";
                 label2.Text = "Nombre de usuario";
                 label3.Text = "contraseña";
                 Logon.Text = "Iniciar sesión";
+                label4.Text = "región de usuario " + CultureInfo.CurrentCulture.Name;
+
             }
-            label4.Text = "User Region " + CultureInfo.CurrentCulture.Name;
 
         }
 
 
-
-
         private void Logon_Click(object sender, EventArgs e)
         {
-
+            if (reader != null)
+            {
+                reader.Close();
+            }
             string username;
             string password;
             DateTime currentTime = DateTime.Now;
@@ -62,15 +66,15 @@ namespace C969_FB
                 reader = sqlCommand.ExecuteReader();
 
 
-
-
-
-
                 if (reader.Read())
                 {
                     if (country == "es-MX")
                     {
                         MessageBox.Show("nombre de usuario y contraseña son correctos");
+                        this.Hide();
+                        mainMenu mainMenumx = new mainMenu();
+                        mainMenumx.Show();
+                        reader.Close();
                         return;
                     }
                     MessageBox.Show("username and password are correct");
@@ -151,10 +155,7 @@ namespace C969_FB
                     MessageBox.Show(ex.ToString());
 
                 }
-                //finally
-                //{
-                //maybe add something hear and clear text from username and password fields to allow it to do retries 
-                //}
+             
             }
         }
     }
