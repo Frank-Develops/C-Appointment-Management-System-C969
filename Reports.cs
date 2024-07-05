@@ -60,14 +60,10 @@ namespace C969_FB
             main.Show();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void getSchedule_Click(object sender, EventArgs e)
         {
-            int userID = int.Parse(typeBox.Text);
+            int userID = int.Parse(userIDBox.Text);
 
             var userSchedule = appointment.Appointments.Where(x => x.userID == userID).ToList();
 
@@ -99,7 +95,7 @@ namespace C969_FB
             var yearAppointments = monthAppointments.Where(x => x.start.Year == year);
             var typeAppointments = yearAppointments.Count(x => x.type == type);
             
-            MessageBox.Show("There are " + typeAppointments + " " + type + " of appointments in the selected month");
+            MessageBox.Show("There are " + typeAppointments + " " + type + " type of appointments in the selected month");
 
         }
     }
