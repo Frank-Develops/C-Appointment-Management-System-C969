@@ -33,8 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.userScheduleGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.getSchedule = new System.Windows.Forms.Button();
@@ -48,6 +46,8 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label10 = new System.Windows.Forms.Label();
             this.userIDBox = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.userScheduleGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +71,6 @@
             this.label1.Size = new System.Drawing.Size(223, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Appointment Types Per Month";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -101,20 +100,9 @@
             this.dataGridViewTextBoxColumn2});
             this.userScheduleGrid.Location = new System.Drawing.Point(520, 175);
             this.userScheduleGrid.Name = "userScheduleGrid";
-            this.userScheduleGrid.Size = new System.Drawing.Size(240, 443);
+            this.userScheduleGrid.RowHeadersVisible = false;
+            this.userScheduleGrid.Size = new System.Drawing.Size(304, 443);
             this.userScheduleGrid.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Start";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Start";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "End";
-            this.dataGridViewTextBoxColumn2.HeaderText = "End";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // typeBox
             // 
@@ -172,9 +160,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label7.Location = new System.Drawing.Point(69, 126);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(212, 20);
+            this.label7.Size = new System.Drawing.Size(277, 20);
             this.label7.TabIndex = 14;
-            this.label7.Text = "to get report in Message Box";
+            this.label7.Text = "calendar to get report in Message Box";
             // 
             // customerIDText
             // 
@@ -212,7 +200,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(251, 20);
             this.label6.TabIndex = 13;
-            this.label6.Text = "choose a month from the calendar";
+            this.label6.Text = "choose day from a month from the";
             // 
             // monthCalendar1
             // 
@@ -238,6 +226,20 @@
             this.userIDBox.Name = "userIDBox";
             this.userIDBox.Size = new System.Drawing.Size(100, 26);
             this.userIDBox.TabIndex = 19;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Start";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Start";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "End";
+            this.dataGridViewTextBoxColumn2.HeaderText = "End";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 150;
             // 
             // Reports
             // 
@@ -284,8 +286,6 @@
         private System.Windows.Forms.Button numAppoints;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.TextBox customerIDText;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -293,5 +293,7 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox userIDBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

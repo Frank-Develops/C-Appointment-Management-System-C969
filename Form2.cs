@@ -26,6 +26,7 @@ namespace C969_FB
         public Form2()
         {
             InitializeComponent();
+         
             label4.Text = "User Region " + CultureInfo.CurrentCulture.Name;
 
             if (country == "es-MX")
@@ -121,13 +122,14 @@ namespace C969_FB
 
                     string writeUser = "test";
                     string writeTime = currentTime.ToString();
-                    string documentPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-
-                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(documentPath, "Login_History.txt"), true))
+                    string filePath = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
+                    var fileToWrite = Path.Combine(filePath, "Login_History.txt");
+                    //the file can be found in bin/debug
+                    using (StreamWriter file = File.AppendText(fileToWrite))
                     {
-                        outputFile.WriteLine("Username: " + writeUser + " logon time: " + writeTime);
-
+                        file.WriteLine("Username: " + writeUser + " logon time: " + writeTime);
                     }
+                   
 
 
                     reader = sqlCommand.ExecuteReader();
