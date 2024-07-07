@@ -69,7 +69,17 @@ namespace C969_FB
                     return;
                 }
 
-           
+                if (DateTime.Parse(start).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(start).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
+
+                if (DateTime.Parse(end).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(end).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
 
                 string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START <= @end AND END >= @start";
 
@@ -180,8 +190,18 @@ namespace C969_FB
                     return;
                 }
 
+                if (DateTime.Parse(start).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(start).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
 
-                
+                if (DateTime.Parse(end).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(end).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
+
 
                 string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START <= @end AND END >= @start";
 

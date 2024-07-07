@@ -50,7 +50,7 @@ namespace C969_FB
             }
             string username;
             string password;
-            DateTime currentTime = DateTime.Now;
+            DateTime currentTime = DateTime.Now.ToLocalTime();
 
             username = textBox1.Text;
             password = textBox2.Text;
