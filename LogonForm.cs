@@ -44,6 +44,7 @@ namespace C969_FB
 
         private void Logon_Click(object sender, EventArgs e)
         {
+
             if (reader != null)
             {
                 reader.Close();
@@ -51,6 +52,7 @@ namespace C969_FB
             string username;
             string password;
             DateTime currentTime = DateTime.Now.ToLocalTime();
+            
 
             username = textBox1.Text;
             password = textBox2.Text;
@@ -113,7 +115,7 @@ namespace C969_FB
 
 
                         string appointmentTimes = dr["start"].ToString();
-                        DateTime appointments = DateTime.Parse(appointmentTimes);
+                        DateTime appointments = DateTime.Parse(appointmentTimes).ToLocalTime();
                         if (appointments >= currentTime && appointments <= currentTime.AddMinutes(15))
                         {
                             MessageBox.Show("you have an appointment in 15 minutes");
