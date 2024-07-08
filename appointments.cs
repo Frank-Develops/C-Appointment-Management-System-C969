@@ -54,8 +54,8 @@ namespace C969_FB
                 string type = typeBox.Text;
                 string start = startBox.Text;
                 string end = endBox.Text;
-                string open = "2024-12-10 08:00:00";
-                string close = "2024-12-10 17:00:00";
+                string open = "2024-12-10 12:00:00";
+                string close = "2024-12-10 21:00:00";
 
 
 
@@ -69,13 +69,23 @@ namespace C969_FB
                     return;
                 }
 
-           
+                if (DateTime.Parse(start).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(start).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
+
+                if (DateTime.Parse(end).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(end).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
 
                 string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START <= @end AND END >= @start";
 
                 sqlCommand = new MySqlCommand(overlapCheck, Connection.conn);
-                sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start));
-                sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end));
+                sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start).ToUniversalTime());
+                sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end).ToUniversalTime());
                 DataTable dt = new DataTable();
                 MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
                 sda.Fill(dt);
@@ -85,7 +95,7 @@ namespace C969_FB
                     rowCounter++;
                 }
 
-                if (DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
+                if (DateTime.Parse(start).ToUniversalTime().TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).ToUniversalTime().TimeOfDay <= DateTime.Parse(close).TimeOfDay)
                 {
                     MessageBox.Show("The office is open then");
                 }
@@ -113,8 +123,8 @@ namespace C969_FB
                     sqlCommand.Parameters.AddWithValue("@location", location);
                     sqlCommand.Parameters.AddWithValue("@contact", contact);
                     sqlCommand.Parameters.AddWithValue("@type", type);
-                    sqlCommand.Parameters.AddWithValue("@start", start);
-                    sqlCommand.Parameters.AddWithValue("@end", end);
+                    sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start).ToUniversalTime());
+                    sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end).ToUniversalTime());
                     reader = sqlCommand.ExecuteReader();
                     reader.Close();
                     MessageBox.Show("Appointment has been added");
@@ -165,8 +175,8 @@ namespace C969_FB
                 string start = startUpdate.Text;
                 string end = endUpdate.Text;
                 int appointmentID = int.Parse(appointmentIDUpdate.Text);
-                string open = "2024-12-10 08:00:00";
-                string close = "2024-12-10 17:00:00";
+                string open = "2024-12-10 12:00:00";
+                string close = "2024-12-10 21:00:00";
 
                 try
                 {
@@ -180,14 +190,24 @@ namespace C969_FB
                     return;
                 }
 
+                if (DateTime.Parse(start).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(start).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
 
-                
+                if (DateTime.Parse(end).DayOfWeek == DayOfWeek.Sunday || DateTime.Parse(end).DayOfWeek == DayOfWeek.Saturday)
+                {
+                    MessageBox.Show("please schedule the appointment between Monday and Friday");
+                    return;
+                }
+
 
                 string overlapCheck = "SELECT START FROM APPOINTMENT WHERE START <= @end AND END >= @start";
 
                 sqlCommand = new MySqlCommand(overlapCheck, Connection.conn);
-                sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start));
-                sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end));
+                sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start).ToUniversalTime());
+                sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end).ToUniversalTime());
                 DataTable dt = new DataTable();
                 MySqlDataAdapter sda = new MySqlDataAdapter(sqlCommand);
                 sda.Fill(dt);
@@ -197,7 +217,7 @@ namespace C969_FB
                     rowCounter++;
                 }
 
-                if (DateTime.Parse(start).TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).TimeOfDay <= DateTime.Parse(close).TimeOfDay)
+                if (DateTime.Parse(start).ToUniversalTime().TimeOfDay >= DateTime.Parse(open).TimeOfDay && DateTime.Parse(end).ToUniversalTime().TimeOfDay <= DateTime.Parse(close).TimeOfDay)
                 {
                     MessageBox.Show("The office is open then");
                 }
@@ -222,8 +242,8 @@ namespace C969_FB
                     sqlCommand.Parameters.AddWithValue("@location", location);
                     sqlCommand.Parameters.AddWithValue("@contact", contact);
                     sqlCommand.Parameters.AddWithValue("@type", type);
-                    sqlCommand.Parameters.AddWithValue("@start", start);
-                    sqlCommand.Parameters.AddWithValue("@end", end);
+                    sqlCommand.Parameters.AddWithValue("@start", DateTime.Parse(start).ToUniversalTime());
+                    sqlCommand.Parameters.AddWithValue("@end", DateTime.Parse(end).ToUniversalTime());
                     sqlCommand.Parameters.AddWithValue("@appointmentID", appointmentID);
                     reader = sqlCommand.ExecuteReader();
                     reader.Close();
